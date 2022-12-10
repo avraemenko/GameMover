@@ -56,7 +56,7 @@ public class TicTacToe1 {
             gameLog.writeLog(entity)
             //currentPlayer.time -= timeInterval()
             changeThePlayer()
-            checkTheWinner()
+            let _ = checkTheWinner()
             checkForDraw()
             if let completionHandler = completionHandler {
                 completionHandler(currentPlayer)
@@ -90,25 +90,24 @@ public class TicTacToe1 {
     }
     
     //game analysis
-    func rollBack(){
+    func rollBack() -> LogEntity? {
         if gameIsFinished {
-            gameLog.rollBack()
+           return  gameLog.rollBack()
         }
+        return nil
     }
     
-    func rollForward(){
+    func rollForward() -> LogEntity? {
         if gameIsFinished{
-            gameLog.rollForward()
+            return gameLog.rollForward()
         }
+        return nil
     }
     
-    func getLog(){
-        if gameIsFinished{
-            gameLog.getLog()
-        }
+    func getLog() -> [LogEntity] {
+         gameLog.getLog()
     }
 
-    //private functions
     
     private func getOppositePlayer() -> Player {
         var oppositePlayer = currentPlayer
